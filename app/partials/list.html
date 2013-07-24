@@ -1,7 +1,12 @@
 <div class="sidebar">
-	<ul>
-		<li ng-repeat="article in articles"><a href="#/home/articles/{{article.id}}">{{article.title}}</a></li>
-	</ul>
-	<span ng-click="signIn()">Sign in</span>
+<header>
+	<span class="btn" ng-click="signIn()">Sign in</span>
+</header>
+
+<ul>
+	<li ng-repeat="article in articles"><a href="#/home/articles/{{article.id}}">{{article.title}}</a></li>
+</ul>
 </div>
-<div ui-view></div>
+
+
+<div class="main" ui-view></div>

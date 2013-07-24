@@ -1,0 +1,64 @@
+@import "normalize.css";
+@import "mixins.less";
+
+@primary-color: blue;
+
+* {
+  .box-sizing(border-box);
+}
+
+html, body, .container {
+  height: 100%;
+}
+
+h1,h2,ul,p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 3px;
+  background-color: @primary-color;
+  color: #fff;
+  text-align: center;
+  margin: 4px;
+}
+
+.sidebar {
+  float: left;
+  position: relative;
+  height: 100%;
+  width: 320px;
+  border-right: 1px solid #ccc;
+
+  ul {
+    border-top: 1px solid #ddd;
+  }
+
+  ul li a{
+    padding: 14px 10px;
+    display: block;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
+    
+    &:visited{
+      color: #999;
+    }
+    &:hover{
+      color: @primary-color;
+      background-color: #fafafa;
+    }
+  }
+}
+
+.main {
+  float: left;
+  padding: 20px;
+}
