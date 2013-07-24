@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-angular.module('pocket.controllers', []).
-  controller('ArticleList', function($scope) {
+angular.module('pocket.controllers', [])
+  .controller('ArticleList', function($scope) {
   	$scope.articles = [
 	  	{'id': 'fomo',
 	  	'title': 'Do You Suffer from #FOMO?',

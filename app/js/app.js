@@ -2,13 +2,9 @@
 
 
 // Declare app level module which depends on filters, and services
-var pocket = angular.module('pocket', ['pocket.filters', 'pocket.services', 'pocket.directives', 'pocket.controllers', 'ui.state']);
-
+var pocket = angular.module('pocket', ['pocket.services', 'pocket.controllers', 'ui.state']);
 
 pocket.config(function($stateProvider, $urlRouterProvider) {
-  //$locationProvider.html5Mode(true);
-
-  $urlRouterProvider.otherwise('/home');
 
   $stateProvider
     .state('index', {
@@ -17,13 +13,12 @@ pocket.config(function($stateProvider, $urlRouterProvider) {
       controller: 'ArticleList'
     })
     .state('index.detail', {
-      url: '/articles/:articleId',
+      url: '/articles/{id}',
       templateUrl: 'partials/detail.html',
       controller: 'ArticleDetail'
     });
 
-  //$routeProvider
-  //  .when('/', {templateUrl: 'partials/list.html', controller: 'ArticleList'})
-  //  .when('/articles/:articleId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetail'})
-  //  .otherwise({redirectTo: '/'});
+  $urlRouterProvider.otherwise('/home');
+
+  //$locationProvider.html5Mode(true);
 });
