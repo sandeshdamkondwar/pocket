@@ -16,6 +16,10 @@ pocket.config(function($stateProvider, $urlRouterProvider) {
       url: '/articles/{id}',
       templateUrl: 'partials/detail.html',
       controller: 'ArticleDetail'
+    })
+    .state('callback', {
+      url: 'callback',
+      templateUrl: 'partials/callback.html'
     });
 
   $urlRouterProvider.otherwise('/home');

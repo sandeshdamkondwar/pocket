@@ -1,8 +1,9 @@
-'use strict';
+'use strict'; 
 
 /* Services */
 
 angular.module('pocket.services', [])
+
 
   // this wonderous function provided by jxnblk
   // http://twitter.com/jxnblk

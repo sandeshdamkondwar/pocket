@@ -1,9 +1,11 @@
 'use strict';
 
+
 /* Controllers */
 
 angular.module('pocket.controllers', [])
-  .controller('ArticleList', function($scope) {
+  .controller('ArticleList', function($scope, $http) {
+
   	$scope.articles = [
 	  	{'id': 'fomo',
 	  	'title': 'Do You Suffer from #FOMO?',
@@ -14,7 +16,19 @@ angular.module('pocket.controllers', [])
 	  	{'id': 'joe-biden',
 	  	'title': 'Have You Heard the One About President Joe Biden?',
 	  	'url': 'http://www.gq.com/news-politics/newsmakers/201308/joe-biden-presidential-campaign-2016-2013#ixzz2Zu3rrl'}
-	  	]
+	  ]
+
+    $scope.signIn = function() {
+
+      var postObject = new Object();
+      postObject.consumer_key = pocketKey;
+      postObject.redirect_uri = "http://www.hilario.com";
+
+      $http.post(apiUrl, postObject).success(function(data){
+        alert(data);
+      });
+    }
+
   }).controller('ArticleDetail', function($scope, $routeParams) {
   	$scope.phoneId = $routeParams.phoneId;
   });
