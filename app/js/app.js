@@ -13,7 +13,6 @@ pocket.config(function($stateProvider, $urlRouterProvider) {
       controller: 'ArticleList'
     })
     .state('index.detail', {
-      url: '/articles/{id}',
       templateUrl: 'partials/detail.html',
       controller: 'ArticleDetail'
     })

@@ -2,6 +2,8 @@
 @import "mixins.less";
 
 @primary-color: blue;
+@sidebar-width: 320px;
+
 
 * {
   .box-sizing(border-box);
@@ -22,19 +24,23 @@ ul {
 
 .btn {
   display: inline-block;
+  cursor: pointer;
+  text-align: center;
   padding: 6px;
+  margin: 4px;
   border-radius: 3px;
   background-color: @primary-color;
   color: #fff;
-  text-align: center;
-  margin: 4px;
+
+  &:hover{
+    background-color: darken(@primary-color,10%);
+  }
 }
 
 .sidebar {
-  float: left;
-  position: relative;
+  position: fixed;
   height: 100%;
-  width: 320px;
+  width: @sidebar-width;
   border-right: 1px solid #ccc;
 
   ul {
@@ -42,6 +48,7 @@ ul {
   }
 
   ul li a{
+    cursor: pointer;
     padding: 14px 10px;
     display: block;
     border-bottom: 1px solid #ddd;
@@ -59,6 +66,6 @@ ul {
 }
 
 .main {
-  float: left;
+  margin-left: @sidebar-width;
   padding: 20px;
 }

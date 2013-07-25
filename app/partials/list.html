@@ -4,7 +4,7 @@
 </header>
 
 <ul>
-	<li ng-repeat="article in articles"><a href="#/home/articles/{{article.id}}">{{article.title}}</a></li>
+	<li ng-repeat="article in articles"><a ng-click="showArticle(article)">{{article.title}}</a></li>
 </ul>
 </div>
 
