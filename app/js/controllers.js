@@ -4,19 +4,9 @@
 /* Controllers */
 
 angular.module('pocket.controllers', [])
-  .controller('ArticleList', ['$scope','$http','$state','urlz', 'storage', function($scope, $http, $state, urlz, storage) {
+  .controller('ArticleList', ['$scope','$http','$state','urlz', 'links', function($scope, $http, $state, urlz, links) {
 
-  	$scope.articles = [
-	  	{
-	  	'title': 'Do You Suffer from #FOMO?',
-	  	'url': 'http://www.gq.com/news-politics/mens-lives/201308/instagram-fomo-disorder-treatment-plan'},
-	  	{
-	  	'title': 'The Last Stand of Walter White',
-	  	'url': 'http://www.gq.com/entertainment/celebrities/201308/bryan-cranston-walter-white-breaking-bad-season-6'}, 
-	  	{
-	  	'title': 'Have You Heard the One About President Joe Biden?',
-	  	'url': 'http://www.gq.com/news-politics/newsmakers/201308/joe-biden-presidential-campaign-2016-2013#ixzz2Zu3rrl'}
-	  ]
+    $scope.articles = links.getLinks();
 
     // currently broken
     $scope.signIn = function() {
@@ -30,8 +20,7 @@ angular.module('pocket.controllers', [])
     }
 
     $scope.showArticle = function(article) {
-      var testUrl = "http://valleywag.gawker.com/techcrunchs-facebook-ambassador-pens-400-words-about-o-901335669";
-      urlz.parseUrl(testUrl).then(function(){
+      urlz.parseUrl(article.url).then(function(){
         $state.transitionTo("index.detail", article, false);
       })
     }
