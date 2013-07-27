@@ -14,7 +14,8 @@ pocket.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('index.detail', {
       templateUrl: 'partials/detail.html',
-      controller: 'ArticleDetail'
+      controller: 'ArticleDetail',
+      params: ['url']
     })
     .state('callback', {
       url: 'callback',

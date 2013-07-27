@@ -10,12 +10,15 @@ angular.module('pocket.services', [])
       getLinks: function() {
         var links = [
           {
+          'id': '1d3fbf',
           'title': 'Do You Suffer from #FOMO?',
           'url': 'http://www.gq.com/news-politics/mens-lives/201308/instagram-fomo-disorder-treatment-plan'},
           {
+          'id': '8fjn2k',
           'title': 'The Last Stand of Walter White',
           'url': 'http://www.gq.com/entertainment/celebrities/201308/bryan-cranston-walter-white-breaking-bad-season-6'}, 
           {
+          'id': 'k19shf',
           'title': 'Have You Heard the One About President Joe Biden?',
           'url': 'http://www.gq.com/news-politics/newsmakers/201308/joe-biden-presidential-campaign-2016-2013#ixzz2Zu3rrl'}
         ]
@@ -27,19 +30,30 @@ angular.module('pocket.services', [])
 
     .factory('urlz', function($http){
 
-      var article = []
+      var articleArray = []
       return {
         parseUrl: function(url) {
 
-          // promise returns a then() function which triggers the detail pane to render with the data
-          var promise = $http.jsonp(diffbotWithKey + "&url=" + url + "&callback=JSON_CALLBACK").success(function(data){
-            article = data;
-          })
+          // search for article first
+          var result = $.grep(articleArray, function(e) { return e.url == url; });
 
-          return promise;
+          // this is not working due to then()
+          if (result[0]){
+            var promise;
+            return promise;
+
+          } else {
+            // promise returns a then() function which triggers the detail pane to render with the data
+            var promise = $http.jsonp(diffbotWithKey + "&url=" + url + "&callback=JSON_CALLBACK",{'headers': {'Content-Type': 'text/html'}}).success(function(data){
+              articleArray.push(data);
+            })
+
+            return promise;
+          }
         },
-        retrieveData: function() {
-          return article;
+        retrieveData: function(url) {
+          var article = $.grep(articleArray, function(e) { return e.url == url; });
+          return article[0];
         }
       }
     })

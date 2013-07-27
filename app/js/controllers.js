@@ -4,7 +4,7 @@
 /* Controllers */
 
 angular.module('pocket.controllers', [])
-  .controller('ArticleList', ['$scope','$http','$state','urlz', 'links', function($scope, $http, $state, urlz, links) {
+  .controller('ArticleList', ['$scope','$http', '$state', 'urlz', 'links', function($scope, $http, $state, urlz, links) {
 
     $scope.articles = links.getLinks();
 
@@ -21,10 +21,10 @@ angular.module('pocket.controllers', [])
 
     $scope.showArticle = function(article) {
       urlz.parseUrl(article.url).then(function(){
-        $state.transitionTo("index.detail", article, false);
+        $state.transitionTo("index.detail", {url: article.url});
       })
     }
 
-  }]).controller('ArticleDetail', ['$scope', '$routeParams', 'urlz', function($scope, $routeParams, urlz) {
-  	$scope.leArticle = urlz.retrieveData();
+  }]).controller('ArticleDetail', ['$scope', '$routeParams', '$stateParams', 'urlz', function($scope, $routeParams, $stateParams, urlz) {
+  	$scope.article = urlz.retrieveData($stateParams.url);
   }]);
