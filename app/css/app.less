@@ -31,19 +31,21 @@ header {
 }
 
 .btn-stack {
-  float: left;
+  cursor: pointer;
+  position: fixed;
+  z-index: 2;
+  left: 8px;
+  top: 8px;
   padding: .4rem .8rem;
-  
+
+
   span {
-    background-color: #999;
+    background-color: #ccc;
     display: block;
     width: 24px;
     height: 4px;
     margin-bottom: 3px;
     border-radius: 2px;
-  }
-  &:first-child {
-    margin-top: 3px;
   }
 }
 
@@ -66,9 +68,11 @@ header {
 .sidebar {
   position: fixed;
   height: 100%;
-  width: @sidebar-width;
+  z-index: 1;
+  width: 100%;
   border-right: 1px solid #ccc;
   background-color: #fcfcfc;
+  .transition(all .25s);
 
   ul {
     border-top: 1px solid #ddd;
@@ -94,13 +98,12 @@ header {
 }
 
 .main {
-  margin-left: @sidebar-width;
   padding: 20px;
+  .transition(all .25s);
 }
 
 .main-title,
 .main-body {
-  width: 70rem;
   position: relative;
   margin: 0 auto;
 }
@@ -111,7 +114,6 @@ header {
 }
 
 .main-body {
-
   p {
     font-size: 2rem;
     margin-top: 2.2rem;
@@ -126,23 +128,69 @@ header {
 }
 
 html {
-  font-size: 37.5%; // 6px
+    font-size: 56.25%; // 9px
+}
+
+.btn-stack {
+  display: block;
+}
+
+.sidebar {
+  .translate(-100%,0px);
+}
+
+.sidebar.open {
+  .translate(0px,0px);
+}
+
+.main.open {
+  .opacity(.25);
+}
+
+@media screen and (min-width: 480px) {
+  .sidebar {
+    width: @sidebar-width;
+    .translate(-@sidebar-width,0px);
+  }
 }
 
 @media screen and (min-width: 768px) {
-  html {
-    font-size: 56.25%; // 9px
+  .sidebar ul li a {
+    font-size: 1.6rem;
+  }
+  
+  .main-title,
+  .main-body {
+    width: 62rem;
   }
 }
 
+// THE CUTOFF
 @media screen and (min-width: 960px) {
-  html {
-    font-size: 62.5%; // 10px
+  .btn-stack {
+    display: none;
+  }
+  .sidebar {
+    .translate(0px,0px);
+    width: 260px;
+  }
+  .main {
+    margin-left: 260px;
+  }
+  .main-title,
+  .main-body {
+    width: 64rem;
   }
 }
 
-@media screen and (min-width: 1180px) {
+@media screen and (min-width: 1280px) {
   html {
     font-size: 75%; // 12px
+  }
+  .sidebar {
+    width: @sidebar-width;
+  }
+  .main {
+    margin-left: @sidebar-width;
   }
 }

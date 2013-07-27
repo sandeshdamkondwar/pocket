@@ -1,13 +1,13 @@
-<div class="sidebar">
-<header>
-	<div class="btn-stack"><span></span><span></span><span></span></div>
-	<span class="btn-signin" ng-click="signIn()">Sign in</span>
-</header>
+<div class="btn-stack" ng-click="showSidebar = !showSidebar"><span></span><span></span><span></span></div>
 
-<ul>
-	<li ng-repeat="article in articles"><a ng-click="showArticle(article)">{{article.title}}</a></li>
-</ul>
-</div>
+<div class="sidebar" ng-class="{'open': showSidebar, '': !showSidebar}">
 
+	<header>
+		<span class="btn-signin" ng-click="signIn()">Sign in</span>
+	</header>
 
-<div class="main" ui-view></div>
+	<ul>
+		<li ng-repeat="article in articles"><a ng-click="showArticle(article)">{{article.title}}</a></li>
+	</ul>
+	</div>
+<div class="main" ui-view ng-class="{'open': showSidebar, '': !showSidebar}"></div>
