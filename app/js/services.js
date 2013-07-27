@@ -44,7 +44,7 @@ angular.module('pocket.services', [])
 
           } else {
             // promise returns a then() function which triggers the detail pane to render with the data
-            var promise = $http.jsonp(diffbotWithKey + "&url=" + url + "&callback=JSON_CALLBACK",{'headers': {'Content-Type': 'text/html'}}).success(function(data){
+            var promise = $http.jsonp(diffbotWithKey + "&url=" + url + "&html=1&callback=JSON_CALLBACK").success(function(data){
               articleArray.push(data);
             })
 

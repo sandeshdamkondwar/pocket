@@ -14,9 +14,15 @@ angular.module('pocket.controllers', [])
       postObject.consumer_key = pocketKey;
       postObject.redirect_uri = "http://www.hilario.com";
 
-      $http.post(pocketUrl, postObject).success(function(data){
-        alert(data);
-      });
+      $http({
+        url: pocketUrl,
+        method: "POST",
+        dataType: "jsonp",
+        data: postObject,
+        success: function() {
+          alert("GREAT SUCCESS");
+        }
+      })
     }
 
     $scope.showArticle = function(article) {

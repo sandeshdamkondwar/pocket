@@ -1,6 +1,7 @@
 @import "normalize.css";
 @import "mixins.less";
 
+@btn-color: #666;
 @primary-color: blue;
 @sidebar-width: 320px;
 
@@ -11,6 +12,8 @@
 
 html, body, .container {
   height: 100%;
+  font-family: "ff-meta-serif-web-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
 h1,h2,ul,p {
@@ -22,18 +25,41 @@ ul {
   padding: 0;
 }
 
-.btn {
+header {
+  overflow: hidden;
+  padding: 8px;
+}
+
+.btn-stack {
+  float: left;
+  padding: .4rem .8rem;
+  
+  span {
+    background-color: #999;
+    display: block;
+    width: 24px;
+    height: 4px;
+    margin-bottom: 3px;
+    border-radius: 2px;
+  }
+  &:first-child {
+    margin-top: 3px;
+  }
+}
+
+.btn-signin {
+  float: right;
   display: inline-block;
   cursor: pointer;
   text-align: center;
-  padding: 6px;
-  margin: 4px;
+  padding: .4rem .8rem;
   border-radius: 3px;
-  background-color: @primary-color;
+  background-color: @btn-color;
   color: #fff;
+  font-size: 1.4rem;
 
   &:hover{
-    background-color: darken(@primary-color,10%);
+    background-color: darken(@btn-color,10%);
   }
 }
 
@@ -42,6 +68,7 @@ ul {
   height: 100%;
   width: @sidebar-width;
   border-right: 1px solid #ccc;
+  background-color: #fcfcfc;
 
   ul {
     border-top: 1px solid #ddd;
@@ -52,15 +79,16 @@ ul {
     padding: 14px 10px;
     display: block;
     border-bottom: 1px solid #ddd;
-    color: #333;
+    color: #666;
     text-decoration: none;
+    font-size: 1.8rem;
     
     &:visited{
       color: #999;
     }
     &:hover{
-      color: @primary-color;
-      background-color: #fafafa;
+      color: #333;
+      background-color: #fafafa; // dat gray
     }
   }
 }
@@ -68,4 +96,53 @@ ul {
 .main {
   margin-left: @sidebar-width;
   padding: 20px;
+}
+
+.main-title,
+.main-body {
+  width: 70rem;
+  position: relative;
+  margin: 0 auto;
+}
+
+
+.main-title {
+  font-size: 3.2rem;
+}
+
+.main-body {
+
+  p {
+    font-size: 2rem;
+    margin-top: 2.2rem;
+    line-height: 3rem;
+  }
+
+  img {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+  }
+}
+
+html {
+  font-size: 37.5%; // 6px
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 56.25%; // 9px
+  }
+}
+
+@media screen and (min-width: 960px) {
+  html {
+    font-size: 62.5%; // 10px
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  html {
+    font-size: 75%; // 12px
+  }
 }
